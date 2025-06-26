@@ -2034,7 +2034,7 @@ function handlePhotoUpload(input, photoId) {
         // Service Worker登録
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/bodor-digital-manual/sw.js')
+                navigator.serviceWorker.register('/bodor_digital_manual/sw.js')
                     .then(registration => {
                         console.log('Service Worker登録成功:', registration.scope);
                     })
