@@ -1,0 +1,2111 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Bodor ファイバーレーザーカッター デジタルマニュアル</title>
+<!-- PWA用のメタタグ -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1e7ce8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Bodor Manual">
+    <link rel="apple-touch-icon" href="icon-192.png">
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+        }
+        
+        .tab-button {
+            flex: 1;
+            padding: 15px 10px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            min-width: 120px;
+        }
+        
+        .tab-button.active {
+            background: #3498db;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .tab-button:hover:not(.active) {
+            background: #ecf0f1;
+            transform: translateY(-1px);
+        }
+        
+        .tab-content {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #3498db;
+            border-radius: 25px;
+            font-size: 1rem;
+            margin-bottom: 30px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box:focus {
+            border-color: #2980b9;
+            box-shadow: 0 0 20px rgba(52, 152, 219, 0.2);
+        }
+        
+        .checklist-item {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto 15px auto;
+            box-sizing: border-box;
+        }
+        
+        .checklist-item:hover {
+            border-color: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .checklist-item.completed {
+            background: #d4edda;
+            border-color: #27ae60;
+        }
+        
+        .checkbox-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .custom-checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #3498db;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .custom-checkbox.checked {
+            background: #27ae60;
+            border-color: #27ae60;
+        }
+        
+        .custom-checkbox.checked::after {
+            content: '✓';
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .item-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .item-description {
+            color: #555;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
+        .item-details {
+            display: none;
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .item-details.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; max-height: 0; }
+            to { opacity: 1; max-height: 500px; }
+        }
+        
+        .expand-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .expand-btn:hover {
+            background: #2980b9;
+            transform: translateY(-1px);
+        }
+        
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid;
+        }
+        
+        .alert-warning {
+            background: #fff3cd;
+            border-color: #f39c12;
+            color: #8a6d3b;
+        }
+        
+        .alert-danger {
+            background: #f2dede;
+            border-color: #e74c3c;
+            color: #a94442;
+        }
+        
+        .alert-info {
+            background: #d9edf7;
+            border-color: #3498db;
+            color: #31708f;
+        }
+        
+        .photo-placeholder {
+            background: #ecf0f1;
+            border: 2px dashed #bdc3c7;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            margin: 15px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .photo-placeholder:hover {
+            border-color: #3498db;
+            background: #e8f4fd;
+        }
+        
+        .photo-placeholder input {
+            display: none;
+        }
+        
+        .progress-bar {
+            background: #ecf0f1;
+            border-radius: 10px;
+            height: 20px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #27ae60, #2ecc71);
+            height: 100%;
+            transition: width 0.5s ease;
+            border-radius: 10px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        /* 操作マニュアルとメンテナンスの項目幅統一 */
+        #manual .checklist-item,
+        #maintenance .checklist-item {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto 15px auto;
+            box-sizing: border-box;
+        }
+        
+        /* 印刷用スタイル */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+                font-size: 12pt;
+                line-height: 1.4;
+            }
+            
+            .container {
+                max-width: none;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .header {
+                background: white !important;
+                box-shadow: none !important;
+                border: 2px solid #333;
+                margin-bottom: 20pt;
+            }
+            
+            .nav-tabs {
+                display: none !important;
+            }
+            
+            .tab-content {
+                display: block !important;
+                background: white !important;
+                box-shadow: none !important;
+                page-break-inside: avoid;
+            }
+            
+            .tab-content:not(.active) {
+                display: block !important;
+            }
+            
+            .search-box {
+                display: none !important;
+            }
+            
+            .checklist-item {
+                background: white !important;
+                border: 1px solid #333 !important;
+                margin-bottom: 10pt;
+                page-break-inside: avoid;
+            }
+            
+            .custom-checkbox {
+                border: 2px solid #333 !important;
+                background: white !important;
+                width: 16pt;
+                height: 16pt;
+            }
+            
+            .custom-checkbox.checked {
+                background: white !important;
+                border: 2px solid #333 !important;
+            }
+            
+            .custom-checkbox.checked::after {
+                content: '✓' !important;
+                color: black !important;
+                font-size: 14pt;
+            }
+            
+            .expand-btn {
+                display: none !important;
+            }
+            
+            .item-details {
+                display: block !important;
+                background: #f9f9f9 !important;
+                border: 1px solid #666 !important;
+                margin-top: 10pt;
+            }
+            
+            .alert {
+                border: 1px solid #333 !important;
+                background: white !important;
+                color: black !important;
+            }
+            
+            .alert-warning {
+                background: #f0f0f0 !important;
+                border-left: 4px solid #333 !important;
+            }
+            
+            .alert-danger {
+                background: #f0f0f0 !important;
+                border-left: 4px solid #000 !important;
+            }
+            
+            .alert-info {
+                background: #f8f8f8 !important;
+                border-left: 4px solid #666 !important;
+            }
+            
+            .photo-placeholder {
+                border: 1px dashed #333 !important;
+                background: white !important;
+                padding: 15pt;
+                text-align: center;
+            }
+            
+            .photo-placeholder::after {
+                content: "[ 写真貼付エリア ]";
+                font-weight: bold;
+            }
+            
+            .stats {
+                display: none !important;
+            }
+            
+            .progress-bar {
+                display: none !important;
+            }
+            
+            h1, h2, h3 {
+                color: black !important;
+                page-break-after: avoid;
+            }
+            
+            h2 {
+                border-bottom: 2px solid #333;
+                padding-bottom: 5pt;
+                margin-top: 20pt;
+            }
+            
+            /* 各タブを別ページに */
+            .tab-content:not(:first-child) {
+                page-break-before: always;
+            }
+            
+            /* チェックボックス用のスペース確保 */
+            .custom-checkbox {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+            
+            /* 印刷時の基本情報表示 */
+            .header input {
+                border: none !important;
+                background: transparent !important;
+                font-weight: bold !important;
+                color: black !important;
+                border-bottom: 1px solid #333 !important;
+                padding: 2pt !important;
+            }
+            
+            .header label {
+                color: black !important;
+                font-weight: bold !important;
+            }
+            
+            .signature-area {
+                margin-top: 30pt;
+                border: 2px solid #333;
+                padding: 15pt;
+                page-break-inside: avoid;
+            }
+            
+            .signature-row {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 15pt;
+                border-bottom: 1px solid #666;
+                padding-bottom: 10pt;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .tab-button {
+                flex: none;
+                min-width: auto;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* 印刷ボタンのスタイル */
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .print-btn:hover {
+            background: #219a52;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(39, 174, 96, 0.4);
+        }
+        
+        @media print {
+            .print-btn {
+                display: none !important;
+            }
+        }
+
+.tab-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/* ロックボタン */
+        .lock-btn {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 1000;
+        }
+        .lock-btn.locked { background: #f39c12; }
+        .locked input, .locked .custom-checkbox {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+        .locked .photo-placeholder {
+            pointer-events: none;
+        }
+        .locked .photo-placeholder img {
+           opacity: 1;
+        }
+        @media print { .lock-btn { display: none !important; } }
+</style>
+</head>
+<body>
+<div class="container" style="position: relative;">
+<button class="print-btn" onclick="window.print()">🖨️ 印刷・PDF出力</button>
+<button class="lock-btn" id="lockBtn" onclick="toggleLock()">🔒 ロック</button>
+<!-- Rev表示（白枠の左上） -->
+<div style="position: absolute; top: 15px; left: 18px;border-radius: 6px; padding: 6px 10px; font-size: 0.75rem; color: #444; box-shadow: 0 0 3px rgba(0,0,0,0.05); z-index: 1;">
+   Rev. A01 2025-06-24
+  </div>
+<div class="header">
+<!-- ロゴ＋タイトルを横並び・文字高さ揃え -->
+<div style="display: flex; align-items: center; gap: 16px; margin-bottom: 10px;">
+<img alt="LaserConnectロゴ" src="./index_files/LaserConnect_Logo_color.svg" style="height: 40px;">
+<h1 style="margin: 0;">🔧 Bodor ファイバーレーザーカッター</h1>
+</div>
+<p style="margin-top: 0; font-size: 1rem; color: #777;">
+    デジタルマニュアル &amp; チェックリスト
+  </p>
+<!-- 現場情報入力エリア -->
+<div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-top: 20px; text-align: left;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+<div>
+<label style="font-weight: bold; color: #2c3e50;">機種名:</label>
+<input id="machineName" placeholder="i7-V2.5など" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px; margin-top: 5px;" type="text">
+</div>
+<div>
+<label style="font-weight: bold; color: #2c3e50;">シリアル番号:</label>
+<input id="serialNumber" placeholder="製造番号を入力" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px; margin-top: 5px;" type="text">
+</div>
+<div>
+<label style="font-weight: bold; color: #2c3e50;">設置場所:</label>
+<input id="location" placeholder="設置先会社名・場所" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px; margin-top: 5px;" type="text">
+</div>
+<div>
+<label style="font-weight: bold; color: #2c3e50;">据付日:</label>
+<input id="installDate" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px; margin-top: 5px;" type="date">
+</div>
+<div>
+<label style="font-weight: bold; color: #2c3e50;">担当者:</label>
+<input id="engineer" placeholder="据付担当者名" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px; margin-top: 5px;" type="text">
+</div>
+<div>
+<label style="font-weight: bold; color: #2c3e50;">顧客担当者:</label>
+<input id="customer" placeholder="顧客側担当者名" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px; margin-top: 5px;" type="text">
+</div>
+</div>
+</div>
+</div>
+<div class="nav-tabs">
+<button class="tab-button active" onclick="switchTab(&#39;checklist&#39;)">📋 納品チェックリスト</button>
+<button class="tab-button" onclick="switchTab(&#39;troubleshooting&#39;)">🆘 トラブル対応</button>
+<button class="tab-button" onclick="switchTab(&#39;manual&#39;)">📖 操作マニュアル</button>
+<button class="tab-button" onclick="switchTab(&#39;maintenance&#39;)">🔧 メンテナンス</button>
+<button class="tab-button" onclick="switchTab(&#39;progress&#39;)">📊 進捗管理</button>
+</div>
+<!-- 納品チェックリスト -->
+<div class="tab-content active" id="checklist">
+<input class="search-box" onkeyup="searchItems(this.value)" placeholder="🔍 項目を検索..." type="text">
+<div class="stats">
+<div class="stat-card">
+<div class="stat-number" id="completedCount">0</div>
+<div class="stat-label">完了項目</div>
+</div>
+<div class="stat-card">
+<div class="stat-number" id="totalCount">16</div>
+<div class="stat-label">総項目数</div>
+</div>
+<div class="stat-card">
+<div class="stat-number" id="progressPercent">0%</div>
+<div class="stat-label">進捗率</div>
+</div>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" id="progressBar" style="width: 0%;"></div>
+</div>
+<h2 style="margin-bottom: 20px;">🏗️ PHASE 1: 据付・機械設置</h2>
+<div class="checklist-item" data-index="1" data-phase="1">
+<div class="checkbox-wrapper">
+<div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+<div>
+<div class="item-title">1. 各ジャッキ部への鉄板敷 + アンカーボルト設置</div>
+<div class="item-description">基礎固定のための鉄板設置とアンカーボルト固定</div>
+</div>
+</div>
+<button class="expand-btn" onclick="toggleDetails(this)">詳細を見る</button>
+<div class="item-details">
+<div class="alert alert-info">
+<strong>確認項目:</strong><br>
+✅ 鉄板厚み：16mm以上<br>
+✅ サイズ：300×500mm以上<br>
+✅ アンカー固定穴：16mmΦ 2箇所
+</div>
+<!-- 複数写真アップロードエリア -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo1-1&#39;).click()"><input accept="image/*" id="photo1-1" onchange="handlePhotoUpload(this, &#39;1-1&#39;)" style="display: none;" type="file"><div style="font-size: 0.8rem; color: rgb(102, 102, 102);">📷 写真1: アンカー固定位置</div></div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo1-2&#39;).click()"><input accept="image/*" id="photo1-2" onchange="handlePhotoUpload(this, &#39;1-2&#39;)" style="display: none;" type="file"><div style="font-size: 0.8rem; color: rgb(102, 102, 102);">📷 写真2: アンカー固定位置</div></div>
+</div>
+</div>
+</div>
+<div class="checklist-item" data-index="2" data-phase="1">
+<div class="checkbox-wrapper">
+<div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+<div>
+<div class="item-title">2. X/Y軸可動部の固定ボルト撤去</div>
+<div class="item-description">輸送固定ボルトの撤去とセンサーフラッグ仮取付</div>
+</div>
+</div>
+<button class="expand-btn" onclick="toggleDetails(this)">詳細を見る</button>
+<div class="item-details">
+<div class="alert alert-warning">
+<strong>⚠️ 重要注意:</strong><br>
+リミットセンサー用フラッグは仮取付のみ<br>
+防塵ジャバラはまだ取付けない
+</div>
+<div class="alert alert-danger">
+<strong>🚨 電源投入前チェック:</strong><br>
+センサーフラッグが他箇所に干渉しない位置か必ず確認！
+</div>
+<!-- 施工写真例 -->
+<div style="display: flex; justify-content: center; margin: 15px 0;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo2-example&#39;).click()" style="border: 2px solid #3498db; border-radius: 8px; padding: 10px; max-width: 400px; text-align: center;"><input accept="image/*" id="photo2-example" onchange="handlePhotoUpload(this, &#39;2-example&#39;)" style="display: none;" type="file"><div style="font-size: 0.8rem; color: rgb(102, 102, 102);">📷 センサーフラッグ取付施工例
+✅ 正しいフラッグ位置</div></div>
+</div>
+<!-- 複数写真アップロードエリア -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo2-1&#39;).click()"><input accept="image/*" id="photo2-1" onchange="handlePhotoUpload(this, &#39;2-1&#39;)" style="display: none;" type="file"><div style="font-size: 0.8rem; color: rgb(102, 102, 102);">📷 写真1: ボルト位置</div></div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo2-2&#39;).click()"><input accept="image/*" id="photo2-2" onchange="handlePhotoUpload(this, &#39;2-2&#39;)" style="display: none;" type="file"><div style="font-size: 0.8rem; color: rgb(102, 102, 102);">📷 写真2: 撤去作業</div></div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo2-3&#39;).click()"><input accept="image/*" id="photo2-3" onchange="handlePhotoUpload(this, &#39;2-3&#39;)" style="display: none;" type="file"><div style="font-size: 0.8rem; color: rgb(102, 102, 102);">📷 写真3: センサーフラッグ</div></div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo2-4&#39;).click()"><input accept="image/*" id="photo2-4" onchange="handlePhotoUpload(this, &#39;2-4&#39;)" style="display: none;" type="file"><div style="font-size: 0.8rem; color: rgb(102, 102, 102);">📷 写真4: 完了状態</div></div>
+</div>
+</div>
+</div>
+<div class="checklist-item" data-index="3" data-phase="1">
+<div class="checkbox-wrapper">
+<div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+<div>
+<div class="item-title">3. モータードライバーからモーター配線コネクターを外す</div>
+<div class="item-description">X/Y軸を手動で動かせるようにする</div>
+</div>
+</div>
+<button class="expand-btn" onclick="toggleDetails(this)">詳細を見る</button>
+<div class="item-details">
+<div class="alert alert-info">
+<strong>作業手順:</strong><br>
+1. レーザー機サイドパネルを開け、X/Y軸モータードライバーから出力側コネクターを慎重に外す<br>
+2. 手で押してX軸/Y軸が移動する事を確認
+</div>
+<!-- 複数写真アップロードエリア -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo3-1&#39;).click()"><input accept="image/*" id="photo3-1" onchange="handlePhotoUpload(this, &#39;3-1&#39;)" style="display: none;" type="file"><div style="font-size: 0.8rem; color: rgb(102, 102, 102);">📷  Aシリーズ　モータードライバー X・Y</div></div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo3-2&#39;).click()"><input accept="image/*" id="photo3-2" onchange="handlePhotoUpload(this, &#39;3-2&#39;)" style="display: none;" type="file"><div style="font-size: 0.8rem; color: rgb(102, 102, 102);">📷  iシリーズ　モータードライバー X1・X2・Y軸</div></div>
+</div>
+</div>
+</div>
+<div class="checklist-item" data-index="4" data-phase="1">
+<div class="checkbox-wrapper">
+<div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+<div>
+<div class="item-title">4. 機械本体レベリング</div>
+<div class="item-description">リニアガイド上で水平測定 (X/Y軸共に0.02mm/1m以内)<br>※最初は中央部のジャッキは接地させず、四隅のジャッキで調整を行い、最後に中央部のジャッキも接地させる<br>調整を終えたら全てのジャッキと鉄板を溶接する</div>
+</div>
+</div>
+<button class="expand-btn" onclick="toggleDetails(this)">詳細を見る</button>
+<div class="item-details">
+<div class="alert alert-info">
+<strong>測定記録:</strong><br>
+X軸: <input placeholder="___mm/1m" style="border:1px solid #ccc; padding:5px; margin:5px;" type="text"><br>
+Y軸: <input placeholder="___mm/1m" style="border:1px solid #ccc; padding:5px; margin:5px;" type="text">
+</div>
+<div class="alert alert-warning">
+<strong>⚠️ レベリング完了後の重要作業:</strong><br>
+**3.の手順で外したモータードライバーの配線コネクターを元通りに戻す**
+</div>
+<!-- 複数写真アップロードエリア -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo4-1&#39;).click()">
+<input accept="image/*" id="photo4-1" onchange="handlePhotoUpload(this, &#39;4-1&#39;)" type="file">
+📷 測定値１
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo4-2&#39;).click()">
+<input accept="image/*" id="photo4-2" onchange="handlePhotoUpload(this, &#39;4-2&#39;)" type="file">
+📷 測定値２
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo4-3&#39;).click()">
+<input accept="image/*" id="photo4-3" onchange="handlePhotoUpload(this, &#39;4-3&#39;)" type="file">
+📷 測定値３
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo4-4&#39;).click()">
+<input accept="image/*" id="photo4-4" onchange="handlePhotoUpload(this, &#39;4-4&#39;)" type="file">
+📷 モータードライバーコネクター再接続
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo4-5&#39;).click()">
+<input accept="image/*" id="photo4-5" onchange="handlePhotoUpload(this, &#39;4-5&#39;)" type="file">
+📷 各部ジャッキと鉄板の溶接
+</div>
+</div>
+</div>
+</div>
+<h2 style="margin: 30px 0 20px 0;">⚡ PHASE 2: 電気・配管接続</h2>
+<div class="checklist-item" data-index="5" data-phase="2">
+<div class="checkbox-wrapper">
+<div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+<div>
+<div class="item-title">5. 発振器搭載・配線接続・カッティングヘッド取付※iシリーズは出荷時に搭載済</div>
+<div class="item-description">発振器の正しい向き・固定・配線確認<br>
+カッティングヘッドへの接続　冷却水・ガス・配線</div>
+</div>
+</div>
+<button class="expand-btn" onclick="toggleDetails(this)">詳細を見る</button>
+<div class="item-details">
+<div class="alert alert-info">
+<strong>発振器配線確認:</strong><br>
+📡 Bluetoothアンテナ<br>
+💧 冷却水IN（供給）<br>
+🔌 信号ケーブル<br>
+♨️ 冷却水OUT（戻り）<br>
+⚡ トランスへ380V電源ケーブル（発振器は三相4線式※中性線不要）<br>
+⏚アース線<br>
+⏻ 電源スイッチ位置
+</div>
+<div class="alert alert-warning" style="margin-bottom: 15px;">
+<div class="alert alert-warning" style="border-left: none; margin:0;">
+<strong>カッティングヘッドへの接続:</strong><br>
+<strong>※発振器出力によりモデルが違うのでコネクター箇所は左右します:</strong><br>
+💧 冷却水IN（供給）<strong>※方向は決まっていないがQBH → 上部保護ウィンドウ → 本体部 全て流れる事 :</strong>
+<br>
+♨️ 冷却水OUT（戻り）<br>
+🔌 W軸モーターケーブル<br>
+💨 アシストガス（スパッタ対策カバーを通す）<br>
+💨 ノズル冷却エアー　※高出力用の為必須ではない<br>
+🔌 リミットセンサーケーブル<br>
+🔌 Z軸センサー用配線
+</div>
+</div>
+<!-- 複数写真アップロードエリア -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo5-1&#39;).click()">
+<input accept="image/*" id="photo5-1" onchange="handlePhotoUpload(this, &#39;5-1&#39;)" type="file">
+📷 発振器設置
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo5-2&#39;).click()">
+<input accept="image/*" id="photo5-2" onchange="handlePhotoUpload(this, &#39;5-2&#39;)" type="file">
+📷 トランスへ発振器電源接続
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo5-3&#39;).click()">
+<input accept="image/*" id="photo5-3" onchange="handlePhotoUpload(this, &#39;5-3&#39;)" type="file">
+📷 カッティングヘッド冷却水経路とガス経路
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo5-4&#39;).click()">
+<input accept="image/*" id="photo5-4" onchange="handlePhotoUpload(this, &#39;5-4&#39;)" type="file">
+📷 カッティングヘッド　W軸モーター配線
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo5-5&#39;).click()">
+<input accept="image/*" id="photo5-5" onchange="handlePhotoUpload(this, &#39;5-5&#39;)" type="file">
+📷 カッティングヘッド　W軸リミットセンサー配線
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo5-6&#39;).click()">
+<input accept="image/*" id="photo5-6" onchange="handlePhotoUpload(this, &#39;5-6&#39;)" type="file">
+📷 カッティングヘッド　W軸内部※通常は分解不可
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo5-7&#39;).click()">
+<input accept="image/*" id="photo5-7" onchange="handlePhotoUpload(this, &#39;5-7&#39;)" type="file">
+📷 カッティングヘッド　Z軸センサーケーブル
+</div>
+</div>
+</div>
+</div>
+<div class="checklist-item" data-index="6" data-phase="2">
+<div class="checkbox-wrapper">
+<div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+<div>
+<div class="item-title">6. チラーポンプ水抜き (6KW以上の発振器が対象)</div>
+<div class="item-description">電源投入前必須作業！エア抜き不足はポンプ故障原因</div>
+</div>
+</div>
+<button class="expand-btn" onclick="toggleDetails(this)">詳細を見る</button>
+<div class="item-details">
+<div class="alert alert-danger">
+<strong>🚨 電源投入前必須作業！</strong><br>
+1. 精製水注入<br>
+2. チラー内部ポンプの後方エア抜きスクリュー緩める<br>
+3. 水が染み出たら締付け<br>
+4. ポンプ横でも同様に実施
+</div>
+<div class="alert alert-info">
+<strong>💡 作業のコツ:</strong><br>
+スクリューを緩めすぎると水が大量に出るので、少しずつ緩めて様子を見る
+</div>
+<!-- 複数写真アップロードエリア -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo6-1&#39;).click()">
+<input accept="image/*" id="photo6-1" onchange="handlePhotoUpload(this, &#39;6-1&#39;)" type="file">
+📷 1: チラー内部ポンプエア抜き作業
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo6-2&#39;).click()">
+<input accept="image/*" id="photo6-2" onchange="handlePhotoUpload(this, &#39;6-2&#39;)" type="file">
+📷 2: チラー内部ポンプエア抜き作業
+</div>
+</div>
+</div>
+</div>
+<div class="checklist-item" data-index="7" data-phase="2">
+<div class="checkbox-wrapper">
+<div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+<div>
+<div class="item-title">7. 圧力設定・ガス配管接続</div>
+<div class="item-description">窒素用→コンプレッサーエア用圧力変更(1MPa)</div>
+</div>
+</div>
+<button class="expand-btn" onclick="toggleDetails(this)">詳細を見る</button>
+<div class="item-details">
+<div class="alert alert-warning">
+<strong>⚠️ 重要注意:</strong><br>
+左側ネジで感知位置調整 → 右側ネジは触るな！<br>
+機械本体側の圧力下限感知設定を確認
+</div>
+<!-- 複数写真アップロードエリア -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo7-1&#39;).click()">
+<input accept="image/*" id="photo7-1" onchange="handlePhotoUpload(this, &#39;7-1&#39;)" type="file">
+📷 写真1: 圧力設定前
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo7-2&#39;).click()">
+<input accept="image/*" id="photo7-2" onchange="handlePhotoUpload(this, &#39;7-2&#39;)" type="file">
+📷 写真2: 調整作業
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo7-3&#39;).click()">
+<input accept="image/*" id="photo7-3" onchange="handlePhotoUpload(this, &#39;7-3&#39;)" type="file">
+📷 写真3: 配管接続
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo7-4&#39;).click()">
+<input accept="image/*" id="photo7-4" onchange="handlePhotoUpload(this, &#39;7-4&#39;)" type="file">
+📷 写真4: 完了状態
+</div>
+</div>
+</div>
+</div>
+<div class="checklist-item" data-index="8" data-phase="2">
+<div class="checkbox-wrapper">
+<div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+<div>
+<div class="item-title">8. PC・LAN接続</div>
+<div class="item-description">抜け止めポート使用・線番確認・PC電源用線番確認</div>
+</div>
+</div>
+<button class="expand-btn" onclick="toggleDetails(this)">詳細を見る</button>
+<div class="item-details">
+<div class="alert alert-info">
+<strong>接続確認項目:</strong><br>
+✅ 抜け止め付きLANポート使用<br>
+✅ PC電源用線番確認<br>
+✅ 対応箇所への正しい接続<br>
+✅ 通信確認
+</div>
+<!-- 複数写真アップロードエリア -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo8-1&#39;).click()">
+<input accept="image/*" id="photo8-1" onchange="handlePhotoUpload(this, &#39;8-1&#39;)" type="file">
+📷 写真1: LANポート
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo8-2&#39;).click()">
+<input accept="image/*" id="photo8-2" onchange="handlePhotoUpload(this, &#39;8-2&#39;)" type="file">
+📷 写真2: 配線確認
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo8-3&#39;).click()">
+<input accept="image/*" id="photo8-3" onchange="handlePhotoUpload(this, &#39;8-3&#39;)" type="file">
+📷 写真3: 接続完了
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo8-4&#39;).click()">
+<input accept="image/*" id="photo8-4" onchange="handlePhotoUpload(this, &#39;8-4&#39;)" type="file">
+📷 写真4: 動作確認
+</div>
+</div>
+</div>
+</div>
+<h2 style="margin: 30px 0 20px 0;">🎯 PHASE 3: キャリブレーション・調整</h2>
+<div class="checklist-item" data-index="9" data-phase="3">
+<div class="checkbox-wrapper">
+<div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+<div>
+<div class="item-title">9. 安全装置動作確認</div>
+<div class="item-description">緊急停止・安全ドア・センサー確認</div>
+</div>
+</div>
+<button class="expand-btn" onclick="toggleDetails(this)">詳細を見る</button>
+<div class="item-details">
+<div class="alert alert-warning">
+<strong>安全機能チェック:</strong><br>
+緊急停止ボタン動作<br>
+安全ドア開閉検知<br>
+各種センサー動作<br>
+光カーテン動作確認
+</div>
+<!-- 複数写真アップロードエリア -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo16-1&#39;).click()">
+<input accept="image/*" id="photo16-1" onchange="handlePhotoUpload(this, &#39;16-1&#39;)" type="file">
+📷 写真1: 緊急停止確認
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo16-2&#39;).click()">
+<input accept="image/*" id="photo16-2" onchange="handlePhotoUpload(this, &#39;16-2&#39;)" type="file">
+📷 写真2: 安全ドア確認
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo16-3&#39;).click()">
+<input accept="image/*" id="photo16-3" onchange="handlePhotoUpload(this, &#39;16-3&#39;)" type="file">
+📷 写真3: センサー確認
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo16-4&#39;).click()">
+<input accept="image/*" id="photo16-4" onchange="handlePhotoUpload(this, &#39;16-4&#39;)" type="file">
+📷 写真4: 光カーテン確認
+</div>
+</div>
+</div>
+</div><div class="checklist-item" data-index="10" data-phase="3">
+<div class="checkbox-wrapper">
+<div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+<div>
+<div class="item-title">10. PC変更無効化の解除・言語設定</div>
+<div class="item-description">ドライブ保護の解除と管理言語の変更</div>
+</div>
+</div>
+<button class="expand-btn" onclick="toggleDetails(this)">詳細を見る</button>
+<div class="item-details">
+<div class="alert alert-info">
+<strong>設定手順:</strong><br>
+1. スタート → FastRestore → Set up → password 【bodor123】 → 管理ドライブのチェックを外す　写真FastRestor<br>
+2 Settings → Time &amp; Languages → Language<br>
+3 Administrative language settings → Japanese<br>
+4 Date &amp; time → Japanese Osaka<br>
+5 Windows display language → Japanese<br>
+6 ログオフ・再起動<br>
+7 Bodor Thinker3起動・言語変更
+</div>
+<!-- 複数写真アップロードエリア -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo10-1&#39;).click()">
+<input accept="image/*" id="photo10-1" onchange="handlePhotoUpload(this, &#39;10-1&#39;)" type="file">
+📷 1: FastRestore
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo10-2&#39;).click()">
+<input accept="image/*" id="photo10-2" onchange="handlePhotoUpload(this, &#39;10-2&#39;)" type="file">
+📷 2: FastRestore
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo10-3&#39;).click()">
+<input accept="image/*" id="photo10-3" onchange="handlePhotoUpload(this, &#39;10-3&#39;)" type="file">
+📷 3: FastRestore
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo10-4&#39;).click()">
+<input accept="image/*" id="photo10-4" onchange="handlePhotoUpload(this, &#39;10-4&#39;)" type="file">
+📷 4: 言語設定
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo10-5&#39;).click()">
+<input accept="image/*" id="photo10-5" onchange="handlePhotoUpload(this, &#39;10-5&#39;)" type="file">
+📷 5: 言語設定
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo10-6&#39;).click()">
+<input accept="image/*" id="photo10-6" onchange="handlePhotoUpload(this, &#39;10-6&#39;)" type="file">
+📷 6: 言語設定
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo10-7&#39;).click()">
+<input accept="image/*" id="photo10-7" onchange="handlePhotoUpload(this, &#39;10-7&#39;)" type="file">
+📷 7: 言語設定
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo10-8&#39;).click()">
+<input accept="image/*" id="photo10-8" onchange="handlePhotoUpload(this, &#39;10-8&#39;)" type="file">
+📷 8: 言語設定
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo10-9&#39;).click()">
+<input accept="image/*" id="photo10-9" onchange="handlePhotoUpload(this, &#39;10-9&#39;)" type="file">
+📷 9: 言語設定
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo10-10&#39;).click()">
+<input accept="image/*" id="photo10-10" onchange="handlePhotoUpload(this, &#39;10-10&#39;)" type="file">
+📷 10: 言語設定 System → Language → Japanese
+</div>
+</div>
+</div>
+</div>
+<div class="checklist-item" data-index="11" data-phase="3">
+<div class="checkbox-wrapper">
+<div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+<div>
+<div class="item-title">11. Bodor Thinker3パラメーター設定</div>
+<div class="item-description">一般設定・加工パラメーター調整</div>
+</div>
+</div>
+<button class="expand-btn" onclick="toggleDetails(this)">詳細を見る</button>
+<div class="item-details">
+<div class="alert alert-info">
+<strong>推奨設定値:</strong><br>
+メーカーパスワード：bodor<br>
+フレームチェックスピード：適正値<br>
+加工Acc：1以下推奨<br>
+バーストパラメーター：出力10、遅延100ms
+</div>
+<!-- 複数写真アップロードエリア -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo11-1&#39;).click()">
+<input accept="image/*" id="photo11-1" onchange="handlePhotoUpload(this, &#39;11-1&#39;)" type="file">
+📷 写真1: ソフト起動
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo11-2&#39;).click()">
+<input accept="image/*" id="photo11-2" onchange="handlePhotoUpload(this, &#39;11-2&#39;)" type="file">
+📷 写真2: パラメーター画面
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo11-3&#39;).click()">
+<input accept="image/*" id="photo11-3" onchange="handlePhotoUpload(this, &#39;11-3&#39;)" type="file">
+📷 写真3: 設定完了
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo11-4&#39;).click()">
+<input accept="image/*" id="photo11-4" onchange="handlePhotoUpload(this, &#39;11-4&#39;)" type="file">
+📷 写真4: 動作確認
+</div>
+</div>
+</div>
+</div>
+<div class="checklist-item" data-index="12" data-phase="3">
+<div class="checkbox-wrapper">
+<div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+<div>
+<div class="item-title">12. X/Y軸原点復帰・動作確認</div>
+<div class="item-description">センサー感知確認・防塵カバー取付</div>
+</div>
+</div>
+<button class="expand-btn" onclick="toggleDetails(this)">詳細を見る</button>
+<div class="item-details">
+<div class="alert alert-warning">
+<strong>⚠️ 重要注意:</strong><br>
+センサーフラッグ確認後に防塵蛇腹カバー取付<br>
+原点復帰前に干渉確認必須
+</div>
+<!-- 複数写真アップロードエリア -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo12-1&#39;).click()">
+<input accept="image/*" id="photo12-1" onchange="handlePhotoUpload(this, &#39;12-1&#39;)" type="file">
+📷 写真1: 原点移動
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo12-2&#39;).click()">
+<input accept="image/*" id="photo12-2" onchange="handlePhotoUpload(this, &#39;12-2&#39;)" type="file">
+📷 写真2: センサー確認
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo12-3&#39;).click()">
+<input accept="image/*" id="photo12-3" onchange="handlePhotoUpload(this, &#39;12-3&#39;)" type="file">
+📷 写真3: カバー取付
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo12-4&#39;).click()">
+<input accept="image/*" id="photo12-4" onchange="handlePhotoUpload(this, &#39;12-4&#39;)" type="file">
+📷 写真4: 動作確認
+</div>
+</div>
+</div>
+</div>
+<h2 style="margin: 30px 0 20px 0;">🎯 PHASE 4: 最終調整・試運転</h2>
+<div class="checklist-item" data-index="13" data-phase="4">
+<div class="checkbox-wrapper">
+<div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+<div>
+<div class="item-title">13. ノズル取付・キャリブレーション</div>
+<div class="item-description">ノズル装着・原点復帰・キャリブレーション実施</div>
+</div>
+</div>
+<button class="expand-btn" onclick="toggleDetails(this)">詳細を見る</button>
+<div class="item-details">
+<div class="alert alert-info">
+<strong>作業手順:</strong><br>
+1. 適切なノズル選択・取付<br>
+2. 原点復帰実行<br>
+3. 材料近接位置でキャリブレーション<br>
+4. 精度確認
+</div>
+<!-- 複数写真アップロードエリア -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo13-1&#39;).click()">
+<input accept="image/*" id="photo13-1" onchange="handlePhotoUpload(this, &#39;13-1&#39;)" type="file">
+📷 写真1: ノズル取付
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo13-2&#39;).click()">
+<input accept="image/*" id="photo13-2" onchange="handlePhotoUpload(this, &#39;13-2&#39;)" type="file">
+📷 写真2: 原点復帰
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo13-3&#39;).click()">
+<input accept="image/*" id="photo13-3" onchange="handlePhotoUpload(this, &#39;13-3&#39;)" type="file">
+📷 写真3: キャリブレーション
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo13-4&#39;).click()">
+<input accept="image/*" id="photo13-4" onchange="handlePhotoUpload(this, &#39;13-4&#39;)" type="file">
+📷 写真4: 完了確認
+</div>
+</div>
+</div>
+</div><div class="checklist-item" data-index="17" data-phase="4">
+<div class="checkbox-wrapper">
+<div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+<div>
+<div class="item-title">14. レーザービーム心出し調整</div>
+<div class="item-description">W軸0設定・ノズルセンター出し</div>
+</div>
+</div>
+<button class="expand-btn" onclick="toggleDetails(this)">詳細を見る</button>
+<div class="item-details">
+<div class="alert alert-info">
+<strong>調整手順:</strong><br>
+1. W軸を0位置にする<br>
+2. 透明テープをノズル端面に貼付<br>
+3. 80-100W設定でレーザー照射<br>
+4. 焼け穴位置がノズル中心になるまで調整
+</div>
+<!-- 複数写真アップロードエリア -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo9-1&#39;).click()">
+<input accept="image/*" id="photo9-1" onchange="handlePhotoUpload(this, &#39;9-1&#39;)" type="file">
+📷 写真1: 調整前状態
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo9-2&#39;).click()">
+<input accept="image/*" id="photo9-2" onchange="handlePhotoUpload(this, &#39;9-2&#39;)" type="file">
+📷 写真2: 調整作業
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo9-3&#39;).click()">
+<input accept="image/*" id="photo9-3" onchange="handlePhotoUpload(this, &#39;9-3&#39;)" type="file">
+📷 写真3: 調整完了
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo9-4&#39;).click()">
+<input accept="image/*" id="photo9-4" onchange="handlePhotoUpload(this, &#39;9-4&#39;)" type="file">
+📷 写真4: 動作確認
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo9-5&#39;).click()">
+<input accept="image/*" id="photo9-5" onchange="handlePhotoUpload(this, &#39;9-5&#39;)" type="file">
+📷 写真5: 最終確認
+</div>
+</div>
+</div>
+</div>
+<div class="checklist-item" data-index="14" data-phase="4">
+<div class="checkbox-wrapper">
+<div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+<div>
+<div class="item-title">15. 潤滑システム確認・オイル補充</div>
+<div class="item-description">作動油32#補充・自動注油確認</div>
+</div>
+</div>
+<button class="expand-btn" onclick="toggleDetails(this)">詳細を見る</button>
+<div class="item-details">
+<div class="alert alert-info">
+<strong>確認事項:</strong><br>
+オイル種類：作動油32#〜68# (32#推奨)<br>
+システムパラメーター：外部機器→グリース付け<br>
+補充口確認・レベル確認
+</div>
+<!-- 複数写真アップロードエリア -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo14-1&#39;).click()">
+<input accept="image/*" id="photo14-1" onchange="handlePhotoUpload(this, &#39;14-1&#39;)" type="file">
+📷 写真1: オイル補充口
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo14-2&#39;).click()">
+<input accept="image/*" id="photo14-2" onchange="handlePhotoUpload(this, &#39;14-2&#39;)" type="file">
+📷 写真2: 補充作業
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo14-3&#39;).click()">
+<input accept="image/*" id="photo14-3" onchange="handlePhotoUpload(this, &#39;14-3&#39;)" type="file">
+📷 写真3: レベル確認
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo14-4&#39;).click()">
+<input accept="image/*" id="photo14-4" onchange="handlePhotoUpload(this, &#39;14-4&#39;)" type="file">
+📷 写真4: 動作確認
+</div>
+</div>
+</div>
+</div>
+<div class="checklist-item" data-index="15" data-phase="4">
+<div class="checkbox-wrapper">
+<div class="custom-checkbox" onclick="toggleCheck(this)"></div>
+<div>
+<div class="item-title">16. テストカット・性能確認</div>
+<div class="item-description">レーザー出力確認・切断品質チェック</div>
+</div>
+</div>
+<button class="expand-btn" onclick="toggleDetails(this)">詳細を見る</button>
+<div class="item-details">
+<div class="alert alert-info">
+<strong>確認項目:</strong><br>
+各軸動作確認<br>
+ピアスのみの貫通確認<br>
+切断品質確認<br>
+エラーの有無確認
+</div>
+<!-- 複数写真アップロードエリア -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo15-1&#39;).click()">
+<input accept="image/*" id="photo15-1" onchange="handlePhotoUpload(this, &#39;15-1&#39;)" type="file">
+📷 写真1: テスト材料
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo15-2&#39;).click()">
+<input accept="image/*" id="photo15-2" onchange="handlePhotoUpload(this, &#39;15-2&#39;)" type="file">
+📷 写真2: 切断作業
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo15-3&#39;).click()">
+<input accept="image/*" id="photo15-3" onchange="handlePhotoUpload(this, &#39;15-3&#39;)" type="file">
+📷 写真3: 切断品質
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo15-4&#39;).click()">
+<input accept="image/*" id="photo15-4" onchange="handlePhotoUpload(this, &#39;15-4&#39;)" type="file">
+📷 写真4: 性能確認
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- トラブル対応 -->
+<div class="tab-content" id="troubleshooting">
+<input class="search-box" onkeyup="searchTrouble(this.value)" placeholder="🔍 症状やエラーを検索..." type="text">
+<h2>🚨 トラブル対応</h2>
+<div class="checklist-item trouble-item" data-index="high1" data-severity="high">
+<div class="item-title" style="color: #e74c3c;">🔴 レーザーが出ない</div>
+<div class="item-description">レーザー発振しない、出力が著しく低い</div>
+<button class="expand-btn" onclick="toggleDetails(this)">対処法を見る</button>
+<div class="item-details">
+<div class="alert alert-danger">
+<strong>即座確認事項:</strong><br>
+1. 発振器電源ON確認→Bodor Thinker3内→電源トランスON→発振器本体電源LED<br>
+2. 保護ウィンドウの汚れや破損確認<br>
+3. チラー動作・水温確認<br>
+4. エラー表示確認→Bodor Thinker3内→スマホApp G6-Series<br>
+5. ノズル穴内のレーザー位置（心出し位置）確認
+</div>
+</div>
+</div>
+<div class="checklist-item trouble-item" data-index="medium1" data-severity="medium">
+<div class="item-title" style="color: #f39c12;">🟡 切断品質不良</div>
+<div class="item-description">バリが出る、切断面が粗い、寸法精度不良</div>
+<button class="expand-btn" onclick="toggleDetails(this)">対処法を見る</button>
+<div class="item-details">
+<div class="alert alert-warning">
+<strong>確認項目:</strong><br>
+1. キャリブレーション再実施<br>
+2. 保護ウィンドウ汚れ<br>
+3. W軸・Z軸焦点位置ずれ<br>
+4. ノズル汚れ・損傷<br>
+5. ガス圧力・品質<br>
+6. 材料が動いてしまう→レーザー発振させずにカット動作させて確認<br>
+7. 機械本体のレベリング不足
+</div>
+</div>
+</div>
+<div class="checklist-item trouble-item" data-index="low1" data-severity="low">
+<div class="item-title" style="color: #27ae60;">🟢 動作音異常</div>
+<div class="item-description">通常と異なる音・振動が発生</div>
+<button class="expand-btn" onclick="toggleDetails(this)">対処法を見る</button>
+<div class="item-details">
+<div class="alert alert-info">
+<strong>確認項目:</strong><br>
+1. 各軸の防塵ジャバラ・ケーブルチェーン状態<br>
+2. ガイドレール給油状態<br>
+3. 各部接触確認<br>
+4. ファン・ブロワー確認<br>
+5. 機械本体のレベリング不足
+</div>
+</div>
+</div>
+<div class="checklist-item trouble-item" data-index="medium2" data-severity="medium">
+<div class="item-title" style="color: #f39c12;">🟡 原点復帰しない または復帰動作が完了しない</div>
+<div class="item-description">起動後、XY軸が原点に戻らず停止する</div>
+<button class="expand-btn" onclick="toggleDetails(this)">対処法を見る</button>
+<div class="item-details">
+<div class="alert alert-warning">
+<strong>段階的確認手順：</strong><br>
+<strong>確認1:</strong> 緊急停止ボタン解除確認　写真1<br>
+→ 押下状態時：ボタンを回して解除<br>
+<strong>確認2:</strong> エラーの確認<br>
+→ Z軸またはW軸のエラーの場合、原点復帰途中のエラーが原因でW軸が原点復帰出来ない事がある　写真2<br>
+→ 焦点コントロール機能を使用してフォーカス位置数値が止まるまでマイナス方向へW軸を下げる　写真3<br>
+→ 原点復帰ボタンを選択し原点復帰させる 写真4<br>
+→ X/Y/Z/W全ての軸の横に
+<svg height="14" style="vertical-align: middle;" viewBox="0 0 100 100" width="14">
+<circle cx="50" cy="50" fill="white" r="50"></circle>
+<path d="M0,0 L50,0 A50,50 0 0,1 0,50 Z" fill="black"></path>
+<path d="M50,50 L100,50 A50,50 0 0,1 50,100 Z" fill="black"></path>
+<circle cx="50" cy="50" fill="none" r="50" stroke="black" stroke-width="2"></circle>
+</svg>
+がついたら原点復帰完了です　写真5<br>
+<strong>確認3:</strong> 動作軸の確認<br>
+→ 各軸を単独で原点復帰させて復帰の可否を確認　写真6<br>
+→ X軸　Y軸の原点復帰が終わらないようであればエラーを確認。　スイッチの位置調整が表示された場合、リミットスイッチ位置の調整を行う <br>
+<strong>確認4:</strong> 物理的なリミットスイッチ位置の確認 写真7<br>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo-origin-1&#39;).click()">
+<input accept="image/*" id="photo-origin-1" onchange="handlePhotoUpload(this, &#39;origin-1&#39;)" type="file">
+        📷 写真1: 緊急停止スイッチ
+      </div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo-origin-2&#39;).click()">
+<input accept="image/*" id="photo-origin-2" onchange="handlePhotoUpload(this, &#39;origin-2&#39;)" type="file">
+        📷 写真2: 原点復帰エラー
+      </div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo-origin-3&#39;).click()">
+<input accept="image/*" id="photo-origin-3" onchange="handlePhotoUpload(this, &#39;origin-3&#39;)" type="file">
+        📷 写真3: 焦点コントロール
+      </div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo-origin-4&#39;).click()">
+<input accept="image/*" id="photo-origin-4" onchange="handlePhotoUpload(this, &#39;origin-4&#39;)" type="file">
+        📷 写真4: 原点復帰
+      </div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo-origin-5&#39;).click()">
+<input accept="image/*" id="photo-origin-5" onchange="handlePhotoUpload(this, &#39;origin-5&#39;)" type="file">
+        📷 写真5: 原点復帰完了
+      </div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo-origin-6&#39;).click()">
+<input accept="image/*" id="photo-origin-6" onchange="handlePhotoUpload(this, &#39;origin-6&#39;)" type="file">
+        📷 写真6: X/Y/Z/W 各軸を単独で原点復帰
+      </div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo-origin-7&#39;).click()">
+<input accept="image/*" id="photo-origin-7" onchange="handlePhotoUpload(this, &#39;origin-7&#39;)" type="file">
+        📷 写真7: 物理的なリミットスイッチ位置の確認
+      </div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo-origin-8&#39;).click()">
+<input accept="image/*" id="photo-origin-8" onchange="handlePhotoUpload(this, &#39;origin-8&#39;)" type="file">
+        📷 写真7: 物理的なリミットスイッチ位置の変更
+      </div>
+</div>
+</div> <!-- .item-details -->
+</div> <!-- .checklist-item -->
+<div class="checklist-item trouble-item" data-index="high3" data-severity="high">
+<div class="item-title" style="color: #e74c3c;">🔴 ガスが出ない</div>
+<div class="item-description">加工開始時にガスが噴出せず、切断できない</div>
+<button class="expand-btn" onclick="toggleDetails(this)">対処法を見る</button>
+<div class="item-details">
+<div class="alert alert-danger">
+<strong>確認項目（例）：</strong><br>
+      1. ガスボンベの圧力・バルブ開閉状態　写真1<br>
+      2. コンプレッサーの電源ONと残圧の確認　写真2<br>
+      3. コンプレッサーのバルブ開閉状態の確認　写真3<br>
+      4. Bodor Thinker3の<strong>BlowOn</strong>を隣のガス選択で接続されているガスを選びテスト　写真4<br>
+      5. 機械内部ガスラインの詰まり・漏れの有無
+    </div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo-gas-1&#39;).click()">
+<input accept="image/*" id="photo-gas-1" onchange="handlePhotoUpload(this, &#39;gas-1&#39;)" type="file">
+        📷 写真1: ガスボンベ圧力計・バルブ開閉状態
+      </div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo-gas-2&#39;).click()">
+<input accept="image/*" id="photo-gas-2" onchange="handlePhotoUpload(this, &#39;gas-2&#39;)" type="file">
+        📷 写真2: コンプレッサーの電源ONと残圧の確認
+      </div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo-gas-3&#39;).click()">
+<input accept="image/*" id="photo-gas-3" onchange="handlePhotoUpload(this, &#39;gas-3&#39;)" type="file">
+        📷 写真3: コンプレッサーのバルブ開閉状態の確認
+      </div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo-gas-4&#39;).click()">
+<input accept="image/*" id="photo-gas-4" onchange="handlePhotoUpload(this, &#39;gas-4&#39;)" type="file">
+        📷 写真4: BlowONとガス種類の選択
+      </div>
+</div>
+</div>
+</div>
+<div class="checklist-item trouble-item" data-index="medium3" data-severity="medium">
+<div class="item-title" style="color: #f39c12;">🟡 エラーが表示される</div>
+<div class="item-description">起動時または加工時にBodorソフト上にエラーが表示される</div>
+<button class="expand-btn" onclick="toggleDetails(this)">対処法を見る</button>
+<div class="item-details">
+<div class="alert alert-warning">
+<strong>確認項目（例）：</strong><br>
+      1. 表示されたエラーコードの内容（E01など）<br>
+      2. Thinker3内の通知ログ（履歴）<br>
+      3. エラー発生直前の操作内容<br>
+      4. モーター・ガス・発振器いずれの系統か判別<br>
+      5. 緊急停止・ドアインターロック状態
+    </div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo-error-1&#39;).click()">
+<input accept="image/*" id="photo-error-1" onchange="handlePhotoUpload(this, &#39;error-1&#39;)" type="file">
+        📷 写真1: エラー表示画面
+      </div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo-error-2&#39;).click()">
+<input accept="image/*" id="photo-error-2" onchange="handlePhotoUpload(this, &#39;error-2&#39;)" type="file">
+        📷 写真2: 操作パネル全体
+      </div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;photo-error-3&#39;).click()">
+<input accept="image/*" id="photo-error-3" onchange="handlePhotoUpload(this, &#39;error-3&#39;)" type="file">
+        📷 写真3: 装置全体の状態
+      </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 操作マニュアル -->
+<div class="tab-content" id="manual">
+<h2>📖 基本操作手順</h2>
+<div class="checklist-item" data-index="manual1">
+<div class="item-title">1. 起動と停止手順</div>
+<div class="item-description">安全な電源操作の順序</div>
+<button class="expand-btn" onclick="toggleDetails(this)">詳細を見る</button>
+<div class="item-details">
+<div class="alert alert-info">
+<strong>投入順序:</strong><br>
+1. チラー電源ON<br>
+2. コンプレッサーの水抜きバルブを閉じる<br>
+3. コンプレッサーの電源ON<br>
+4. 発振器本体物理電源ON※別途ある場合に限る<br>
+5. 機械本体電源ON<br>
+6. PC起動<br>
+7. ソフトウェア起動<br>
+8. 機械原点復帰<br>
+9. 発振器電源ON(Bodor Thinker3内）
+</div>
+<!-- 投入順序写真エリア -->
+<div style="background: #e8f4fd; padding: 15px; border-radius: 8px; margin: 15px 0;">
+<h4 style="color: #2c3e50; margin-bottom: 15px;">📷 投入順序 作業写真</h4>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;startup-photo-1&#39;).click()">
+<input accept="image/*" id="startup-photo-1" onchange="handlePhotoUpload(this, &#39;startup-1&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">1. チラー電源ON</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;startup-photo-2&#39;).click()">
+<input accept="image/*" id="startup-photo-2" onchange="handlePhotoUpload(this, &#39;startup-2&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">2. 水抜きバルブを閉じる</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;startup-photo-3&#39;).click()">
+<input accept="image/*" id="startup-photo-3" onchange="handlePhotoUpload(this, &#39;startup-3&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">3. コンプレッサー電源ON</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;startup-photo-4&#39;).click()">
+<input accept="image/*" id="startup-photo-4" onchange="handlePhotoUpload(this, &#39;startup-4&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">4. 発振器本体物理電源ON</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;startup-photo-5&#39;).click()">
+<input accept="image/*" id="startup-photo-5" onchange="handlePhotoUpload(this, &#39;startup-5&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">5. 機械本体電源ON</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;startup-photo-6&#39;).click()">
+<input accept="image/*" id="startup-photo-6" onchange="handlePhotoUpload(this, &#39;startup-6&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">6. PC起動</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;startup-photo-7&#39;).click()">
+<input accept="image/*" id="startup-photo-7" onchange="handlePhotoUpload(this, &#39;startup-7&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">7. ソフトウェア起動</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;startup-photo-8&#39;).click()">
+<input accept="image/*" id="startup-photo-8" onchange="handlePhotoUpload(this, &#39;startup-8&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">8. 機械原点復帰</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;startup-photo-9&#39;).click()">
+<input accept="image/*" id="startup-photo-9" onchange="handlePhotoUpload(this, &#39;startup-9&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">9. 発振器電源ON</div>
+</div>
+</div>
+</div>
+<div class="alert alert-warning" style="margin-top: 20px;">
+<strong>終了順序:</strong><br>
+    1. 発振器電源OFF（Bodor Thinker3内）<br>
+    2. ソフトウェア終了<br>
+    3. PC電源OFF<br>
+    4. 機械本体電源OFF<br>
+    5. 発振器本体物理電源OFF※別途ある場合に限る<br>
+    6. コンプレッサー電源OFF<br>
+    7. コンプレッサー水抜きバルブ解放<br>
+    8. チラー電源OFF（加工終了から10分以降を推奨）
+  </div>
+<!-- 終了順序写真エリア -->
+<div style="background: #fff3cd; padding: 15px; border-radius: 8px; margin: 15px 0;">
+<h4 style="color: #2c3e50; margin-bottom: 15px;">📷 終了順序 作業写真</h4>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;shutdown-photo-1&#39;).click()">
+<input accept="image/*" id="shutdown-photo-1" onchange="handlePhotoUpload(this, &#39;shutdown-1&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">1. 発振器電源OFF</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;shutdown-photo-2&#39;).click()">
+<input accept="image/*" id="shutdown-photo-2" onchange="handlePhotoUpload(this, &#39;shutdown-2&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">2. ソフトウェア終了</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;shutdown-photo-3&#39;).click()">
+<input accept="image/*" id="shutdown-photo-3" onchange="handlePhotoUpload(this, &#39;shutdown-3&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">3. PC電源OFF</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;shutdown-photo-4&#39;).click()">
+<input accept="image/*" id="shutdown-photo-4" onchange="handlePhotoUpload(this, &#39;shutdown-4&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">4. 機械本体電源OFF</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;shutdown-photo-5&#39;).click()">
+<input accept="image/*" id="shutdown-photo-5" onchange="handlePhotoUpload(this, &#39;shutdown-5&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">5. 発振器本体物理電源OFF</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;shutdown-photo-6&#39;).click()">
+<input accept="image/*" id="shutdown-photo-6" onchange="handlePhotoUpload(this, &#39;shutdown-6&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">6. コンプレッサー電源OFF</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;shutdown-photo-7&#39;).click()">
+<input accept="image/*" id="shutdown-photo-7" onchange="handlePhotoUpload(this, &#39;shutdown-7&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">7. 水抜きバルブ解放</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;shutdown-photo-8&#39;).click()">
+<input accept="image/*" id="shutdown-photo-8" onchange="handlePhotoUpload(this, &#39;shutdown-8&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">8. チラー電源OFF</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- メンテナンス -->
+<div class="tab-content" id="maintenance">
+<h2>🔧 メンテナンススケジュール</h2>
+<div class="checklist-item" data-index="maint1">
+<div class="item-title">毎日 - 日常点検</div>
+<div class="item-description">作業開始前後の基本チェック</div>
+<button class="expand-btn" onclick="toggleDetails(this)">詳細を見る</button>
+<div class="item-details">
+<div class="alert alert-warning" style="margin-top: 15px;">
+<strong>⚠️ ウィンドウ点検時の重要注意事項　※保護ウィンドウを取り出す際には厳守!!</strong><br>
+ • 発振器の電源は必ず停止すること(Bodor Thinker3内)<br>
+ • 集塵機は必ず停止すること<br>
+ • カッティングヘッド周辺に埃が舞わない状態で行う<br>
+ • 換気扇の動作を止めること（室内空気の流れを防ぐ）<br>
+ • チラーの排気が点検室と同じ空間にある場合は、チラーも停止すること<br>
+ • ノズル先端を最初にテープで塞ぎ、ウィンドウを取り出したら直ぐにカバーを閉める
+  </div>
+<div class="alert alert-info">
+<strong>日常点検項目:</strong><br>
+-1. コンプレッサータンク水抜き※作業終了後毎回必須<br>
+-2. 冷却水温度・レベル<br>
+-3. エアー・ガス圧力<br>
+-4. 保護ウィンドウ点検<br>
+-5. ノズル状態確認
+</div>
+<!-- 毎日点検写真エリア -->
+<div style="background: #e8f4fd; padding: 15px; border-radius: 8px; margin: 15px 0;">
+<h4 style="color: #2c3e50; margin-bottom: 15px;">📷 毎日点検 作業写真</h4>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;daily-photo-1&#39;).click()">
+<input accept="image/*" id="daily-photo-1" onchange="handlePhotoUpload(this, &#39;daily-1&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">1. コンプレッサータンク水抜き ※作業終了後毎回必須</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;daily-photo-2&#39;).click()">
+<input accept="image/*" id="daily-photo-2" onchange="handlePhotoUpload(this, &#39;daily-2&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">2. 冷却水温度・レベル確認</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;daily-photo-3&#39;).click()">
+<input accept="image/*" id="daily-photo-3" onchange="handlePhotoUpload(this, &#39;daily-3&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">3. エアー・ガス圧力確認</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;daily-photo-4&#39;).click()">
+<input accept="image/*" id="daily-photo-4" onchange="handlePhotoUpload(this, &#39;daily-4&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #2ecc71; margin-top: 5px;">4. 保護ウィンドウ簡易点検 白い紙に写ったレッドポインター形状を確認</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;daily-photo-5&#39;).click()">
+<input accept="image/*" id="daily-photo-5" onchange="handlePhotoUpload(this, &#39;daily-5&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #2ecc71; margin-top: 5px;">4. 保護ウィンドウ良好な様子 白い紙に写ったレッドポインターに影や崩れが無い</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;daily-photo-6&#39;).click()">
+<input accept="image/*" id="daily-photo-6" onchange="handlePhotoUpload(this, &#39;daily-6&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #e74c3c; margin-top: 5px;">4. 保護ウィンドウが汚れている様子 白い紙に写ったレッドポインターに影が有る</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;daily-photo-7&#39;).click()">
+<input accept="image/*" id="daily-photo-7" onchange="handlePhotoUpload(this, &#39;daily-7&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #2ecc71; margin-top: 5px;">4. 保護ウィンドウ良好な様子 ライトで透かして見ても影が無い</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;daily-photo-8&#39;).click()">
+<input accept="image/*" id="daily-photo-8" onchange="handlePhotoUpload(this, &#39;daily-8&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #e74c3c; margin-top: 5px;">4. 保護ウィンドウが汚れている様子 ライトで透かすと影が映る</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;daily-photo-9&#39;).click()">
+<input accept="image/*" id="daily-photo-9" onchange="handlePhotoUpload(this, &#39;daily-9&#39;)" type="file">
+📷 <div style="font-size: 0.8rem; color: #2ecc71; margin-top: 5px;">5. ノズル状態確認（良い例）</div></div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;daily-photo-10-bad&#39;).click()">
+<input accept="image/*" id="daily-photo-10-bad" onchange="handlePhotoUpload(this, &#39;daily-10-bad&#39;)" type="file">
+📷 <div style="font-size: 0.8rem; color: #e74c3c; margin-top: 5px;">5. ノズル状態確認（悪い例）</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="checklist-item" data-index="maint2">
+<div class="item-title">週1回 - 定期清掃</div>
+<div class="item-description">機械精度維持のための清掃</div>
+<button class="expand-btn" onclick="toggleDetails(this)">詳細を見る</button>
+<div class="item-details">
+<div class="alert alert-info">
+<strong>清掃項目:</strong><br>
+-1. 防塵ジャバラ清拭<br>
+-2. 加工テーブル下トレー<br>
+-3. 制御室フィルター清掃<br>
+-4. 排気ダクト点検<br>
+-5. 配線類確認
+</div>
+<!-- 週1回清掃写真エリア -->
+<div style="background: #fff3cd; padding: 15px; border-radius: 8px; margin: 15px 0;">
+<h4 style="color: #2c3e50; margin-bottom: 15px;">📷 週1回清掃 作業写真</h4>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;weekly-photo-1&#39;).click()">
+<input accept="image/*" id="weekly-photo-1" onchange="handlePhotoUpload(this, &#39;weekly-1&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">1. 防塵ジャバラ清拭</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;weekly-photo-2&#39;).click()">
+<input accept="image/*" id="weekly-photo-2" onchange="handlePhotoUpload(this, &#39;weekly-2&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">2. 加工テーブル下トレー清掃</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;weekly-photo-3&#39;).click()">
+<input accept="image/*" id="weekly-photo-3" onchange="handlePhotoUpload(this, &#39;weekly-3&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">3. 制御室フィルター清掃</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;weekly-photo-4&#39;).click()">
+<input accept="image/*" id="weekly-photo-4" onchange="handlePhotoUpload(this, &#39;weekly-4&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">4. 排気ダクト点検</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;weekly-photo-5&#39;).click()">
+<input accept="image/*" id="weekly-photo-5" onchange="handlePhotoUpload(this, &#39;weekly-5&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">5. 配線類確認</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="checklist-item" data-index="maint3">
+<div class="item-title">月1回 - 点検</div>
+<div class="item-description">潤滑油・精度確認</div>
+<button class="expand-btn" onclick="toggleDetails(this)">詳細を見る</button>
+<div class="item-details">
+<div class="alert alert-info">
+<strong>点検項目:</strong><br>
+-1. レーザービーム心出し調整<br>
+-2. チラー吸気フィルター清掃<br>
+-3. コンプレッサー吸気フィルター清掃※<strong>🚨 停止後、冷間時に行う事！</strong><br>
+-4. コンプレッサーオイルレベル点検※<strong>🚨 停止後、冷間時に確認する事！</strong><br>
+-5. レーザー機潤滑油レベル確認※<strong>🚨 加工機を必ず停止してから行う事！</strong><br>
+-6. 集塵装置フィルター清掃
+</div>
+<!-- 月1回点検写真エリア -->
+<div style="background: #d4edda; padding: 15px; border-radius: 8px; margin: 15px 0;">
+<h4 style="color: #2c3e50; margin-bottom: 15px;">📷 月1回点検 作業写真</h4>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+<div class="photo-placeholder" onclick="document.getElementById(&#39;monthly-photo-1&#39;).click()">
+<input accept="image/*" id="monthly-photo-1" onchange="handlePhotoUpload(this, &#39;monthly-1&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">1. レーザービーム心出し調整</div>
+<div style="font-size: 0.7rem; color: #e74c3c; font-weight: bold; margin-top: 3px;">【ノズル先端穴へセロハンテープを貼る】</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;monthly-photo-2&#39;).click()">
+<input accept="image/*" id="monthly-photo-2" onchange="handlePhotoUpload(this, &#39;monthly-2&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">1. レーザービーム心出し調整</div>
+<div style="font-size: 0.7rem; color: #e74c3c; font-weight: bold; margin-top: 3px;">【ノズル先端穴の中心に位置している事】</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;monthly-photo-3&#39;).click()">
+<input accept="image/*" id="monthly-photo-3" onchange="handlePhotoUpload(this, &#39;monthly-3&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">2. チラー吸気フィルター清掃</div>
+<div style="font-size: 0.7rem; color: #e74c3c; font-weight: bold; margin-top: 3px;">【チラー周囲パネルを外しエアーブローで清掃】</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;monthly-photo-4&#39;).click()">
+<input accept="image/*" id="monthly-photo-4" onchange="handlePhotoUpload(this, &#39;monthly-4&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">3. コンプレッサー吸気フィルター清掃</div>
+<div style="font-size: 0.7rem; color: #e74c3c; font-weight: bold; margin-top: 3px;">【エアーブローで清掃】</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;monthly-photo-5&#39;).click()">
+<input accept="image/*" id="monthly-photo-5" onchange="handlePhotoUpload(this, &#39;monthly-5&#39;)" type="file">
+  📷 
+  <div style="font-size: 0.8rem; color: #666; margin-top: 5px;">4. スクリューコンプレッサー用オイル#46（全容量約10L）</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;monthly-photo-6&#39;).click()">
+<input accept="image/*" id="monthly-photo-6" onchange="handlePhotoUpload(this, &#39;monthly-6&#39;)" type="file">
+  📷 
+  <div style="font-size: 0.8rem; color: #666; margin-top: 5px;">4. スクリューコンプレッサー用オイル#46（全容量約10L）</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;monthly-photo-7&#39;).click()">
+<input accept="image/*" id="monthly-photo-7" onchange="handlePhotoUpload(this, &#39;monthly-7&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">5. レーザー機潤滑油レベル確認</div>
+<div style="font-size: 0.7rem; color: #e74c3c; font-weight: bold; margin-top: 3px;">【機械作動油#32使用】</div>
+</div>
+<div class="photo-placeholder" onclick="document.getElementById(&#39;monthly-photo-8&#39;).click()">
+<input accept="image/*" id="monthly-photo-8" onchange="handlePhotoUpload(this, &#39;monthly-8&#39;)" type="file">
+📷 
+<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">6. 集塵装置フィルター清掃</div>
+<div style="font-size: 0.7rem; color: #e74c3c; font-weight: bold; margin-top: 3px;">【エアーブローで清掃。必要に応じて外す】</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 進捗管理 -->
+<div class="tab-content" id="progress">
+<h2>📊 作業進捗管理</h2>
+<div class="stats">
+<div class="stat-card">
+<div class="stat-number" id="phase1Progress">0%</div>
+<div class="stat-label">Phase 1 完了率</div>
+</div>
+<div class="stat-card">
+<div class="stat-number" id="phase2Progress">0%</div>
+<div class="stat-label">Phase 2 完了率</div>
+</div>
+<div class="stat-card">
+<div class="stat-number" id="phase3Progress">0%</div>
+<div class="stat-label">Phase 3 完了率</div>
+</div>
+<div class="stat-card">
+<div class="stat-number" id="phase4Progress">0%</div>
+<div class="stat-label">Phase 4 完了率</div>
+</div>
+<div class="stat-card">
+<div class="stat-number" id="totalTime">0分</div>
+<div class="stat-label">経過時間</div>
+</div>
+<div class="stat-card">
+<div class="stat-number" id="photosUploaded">9</div>
+<div class="stat-label">写真枚数</div>
+</div>
+</div>
+<h3>フェーズ別進捗詳細</h3>
+<div id="phaseDetails">
+<div class="checklist-item">
+<div class="item-title">Phase 1: 据付・機械設置</div>
+<div class="item-description">基礎工事からレベリングまで</div>
+<div class="progress-bar">
+<div class="progress-fill" id="phase1Bar" style="width: 0%;"></div>
+</div>
+</div>
+<div class="checklist-item">
+<div class="item-title">Phase 2: 電気・配管接続</div>
+<div class="item-description">電源・冷却・ガス配管接続</div>
+<div class="progress-bar">
+<div class="progress-fill" id="phase2Bar" style="width: 0%"></div>
+</div>
+</div>
+<div class="checklist-item">
+<div class="item-title">Phase 3: キャリブレーション・調整</div>
+<div class="item-description">精密調整・ソフト設定</div>
+<div class="progress-bar">
+<div class="progress-fill" id="phase3Bar" style="width: 0%"></div>
+</div>
+</div>
+<div class="checklist-item">
+<div class="item-title">Phase 4: 最終調整・試運転</div>
+<div class="item-description">性能確認・安全点検</div>
+<div class="progress-bar">
+<div class="progress-fill" id="phase4Bar" style="width: 0%"></div>
+</div>
+</div>
+</div>
+</div>
+<script>
+let startTime = Date.now();
+let photosCount = 0;
+let isLocked = false;
+const LOCK_PASSWORD = "laserconnect";
+
+function toggleLock() {
+    if (isLocked) {
+        const password = prompt("パスワードを入力してください:");
+        if (password === LOCK_PASSWORD) {
+            isLocked = false;
+            document.body.classList.remove('locked');
+            document.getElementById('lockBtn').textContent = '🔒 ロック';
+            alert("編集モードが有効になりました");
+        } else {
+            alert("パスワードが間違っています");
+        }
+    } else {
+        isLocked = true;
+        document.body.classList.add('locked');
+        document.getElementById('lockBtn').textContent = '🔓 解除';
+        alert("編集がロックされました");
+    }
+}
+function switchTab(tabName) {
+    // Hide all tabs
+    document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Show selected tab
+    document.getElementById(tabName).classList.add('active');
+    event.target.classList.add('active');
+}
+
+function toggleCheck(checkbox) {
+    if (isLocked) return; 
+    checkbox.classList.toggle('checked');
+    const item = checkbox.closest('.checklist-item');
+    item.classList.toggle('completed');
+    updateProgress();
+    saveProgress();
+}
+
+function toggleDetails(button) {
+    const details = button.nextElementSibling;
+    details.classList.toggle('show');
+    button.textContent = details.classList.contains('show') ? '詳細を閉じる' : '詳細を見る';
+}
+
+function updateProgress() {
+    const total = document.querySelectorAll('.custom-checkbox').length;
+    const completed = document.querySelectorAll('.custom-checkbox.checked').length;
+    const percentage = Math.round((completed / total) * 100);
+    
+    document.getElementById('completedCount').textContent = completed;
+    const totalCountElement = document.getElementById('totalCount');
+    if (totalCountElement) {
+        totalCountElement.textContent = total;
+    }
+    document.getElementById('progressPercent').textContent = percentage + '%';
+    document.getElementById('progressBar').style.width = percentage + '%';
+    
+    // Update phase progress
+    updatePhaseProgress();
+    updateTimer();
+}
+
+function updatePhaseProgress() {
+    // Phase 1 (items 1-4)
+    const phase1Items = document.querySelectorAll('[data-phase="1"] .custom-checkbox');
+    const phase1Completed = document.querySelectorAll('[data-phase="1"] .custom-checkbox.checked');
+    const phase1Percent = phase1Items.length > 0 ? Math.round((phase1Completed.length / phase1Items.length) * 100) : 0;
+    document.getElementById('phase1Progress').textContent = phase1Percent + '%';
+    const phase1Bar = document.getElementById('phase1Bar');
+    if (phase1Bar) phase1Bar.style.width = phase1Percent + '%';
+    
+    // Phase 2 (items 5-8)
+    const phase2Items = document.querySelectorAll('[data-phase="2"] .custom-checkbox');
+    const phase2Completed = document.querySelectorAll('[data-phase="2"] .custom-checkbox.checked');
+    const phase2Percent = phase2Items.length > 0 ? Math.round((phase2Completed.length / phase2Items.length) * 100) : 0;
+    document.getElementById('phase2Progress').textContent = phase2Percent + '%';
+    const phase2Bar = document.getElementById('phase2Bar');
+    if (phase2Bar) phase2Bar.style.width = phase2Percent + '%';
+    
+    // Phase 3 (items 9-12)
+    const phase3Items = document.querySelectorAll('[data-phase="3"] .custom-checkbox');
+    const phase3Completed = document.querySelectorAll('[data-phase="3"] .custom-checkbox.checked');
+    const phase3Percent = phase3Items.length > 0 ? Math.round((phase3Completed.length / phase3Items.length) * 100) : 0;
+    document.getElementById('phase3Progress').textContent = phase3Percent + '%';
+    const phase3Bar = document.getElementById('phase3Bar');
+    if (phase3Bar) phase3Bar.style.width = phase3Percent + '%';
+    
+    // Phase 4 (items 13-16)
+    const phase4Items = document.querySelectorAll('[data-phase="4"] .custom-checkbox');
+    const phase4Completed = document.querySelectorAll('[data-phase="4"] .custom-checkbox.checked');
+    const phase4Percent = phase4Items.length > 0 ? Math.round((phase4Completed.length / phase4Items.length) * 100) : 0;
+    const phase4ProgressElement = document.getElementById('phase4Progress');
+    if (phase4ProgressElement) {
+        phase4ProgressElement.textContent = phase4Percent + '%';
+    }
+    const phase4Bar = document.getElementById('phase4Bar');
+    if (phase4Bar) phase4Bar.style.width = phase4Percent + '%';
+}
+
+function updateTimer() {
+    const elapsed = Math.floor((Date.now() - startTime) / 60000);
+    document.getElementById('totalTime').textContent = elapsed + '分';
+}
+
+function handlePhotoUpload(input, photoId) {
+  if (isLocked) return;
+  const file = input.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    const parent = input.parentElement;
+
+    const fullText = parent.textContent.trim();  // 元のラベル保持
+
+    const newInput = input.cloneNode();
+    newInput.style.display = 'none';
+    newInput.onchange = function () {
+      handlePhotoUpload(newInput, photoId);
+    };
+
+    // アップロード画像の表示
+    const preview = document.createElement("img");
+    preview.src = e.target.result;
+    preview.style.maxWidth = "100%";
+    preview.style.borderRadius = "6px";
+    preview.style.marginBottom = "8px";
+
+    // ラベル（例：📷 写真3: 配管接続）
+    const itemLabel = document.createElement("div");
+    itemLabel.innerHTML = fullText;
+    itemLabel.style.fontSize = "0.8rem";
+    itemLabel.style.color = "#666";
+
+    // 🗑 削除ボタン
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "🗑 写真を削除";
+    deleteBtn.style.marginTop = "10px";
+    deleteBtn.style.padding = "4px 8px";
+    deleteBtn.style.fontSize = "0.8rem";
+    deleteBtn.style.backgroundColor = "#eee";
+    deleteBtn.style.border = "1px solid #ccc";
+    deleteBtn.style.borderRadius = "4px";
+    deleteBtn.style.cursor = "pointer";
+
+    deleteBtn.onclick = function () {
+      parent.innerHTML = '';
+      parent.appendChild(newInput);
+
+      const placeholderText = document.createElement("div");
+      placeholderText.textContent = fullText;
+      placeholderText.style.fontSize = "0.8rem";
+      placeholderText.style.color = "#666";
+      parent.appendChild(placeholderText);
+    };
+
+    // 要素を表示
+    parent.innerHTML = '';
+    parent.appendChild(newInput);
+    parent.appendChild(preview);
+    parent.appendChild(itemLabel);
+    parent.appendChild(deleteBtn);
+
+    // アップロード数カウント（あれば）
+    photosCount++;
+    const photosUploadedElement = document.getElementById('photosUploaded');
+    if (photosUploadedElement) {
+      photosUploadedElement.textContent = photosCount;
+    }
+  };
+
+  reader.readAsDataURL(file);
+}
+</script>
+<script>
+        // Service Worker登録
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/bodor-digital-manual/sw.js')
+                    .then(registration => {
+                        console.log('Service Worker登録成功:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker登録失敗:', error);
+                    });
+            });
+        }
+
+        // インストールプロンプト用
+        let deferredPrompt;
+        let installButton = null;
+
+        // インストールプロンプトをキャッチ
+        window.addEventListener('beforeinstallprompt', (e) => {
+            console.log('インストールプロンプト表示可能');
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // インストールボタンを表示（オプション）
+            showInstallButton();
+        });
+
+        // インストールボタンを表示する関数（オプション）
+        function showInstallButton() {
+            // 既存のボタンがなければ作成
+            if (!installButton) {
+                installButton = document.createElement('button');
+                installButton.textContent = '📱 アプリとしてインストール';
+                installButton.style.position = 'fixed';
+                installButton.style.bottom = '20px';
+                installButton.style.right = '20px';
+                installButton.style.padding = '10px 15px';
+                installButton.style.backgroundColor = '#1e7ce8';
+                installButton.style.color = 'white';
+                installButton.style.border = 'none';
+                installButton.style.borderRadius = '5px';
+                installButton.style.cursor = 'pointer';
+                installButton.style.zIndex = '1000';
+                installButton.style.fontSize = '14px';
+                
+                installButton.addEventListener('click', installApp);
+                document.body.appendChild(installButton);
+            }
+            installButton.style.display = 'block';
+        }
+
+        // アプリインストール実行
+        function installApp() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('ユーザーがインストールを承認');
+                    } else {
+                        console.log('ユーザーがインストールを拒否');
+                    }
+                    deferredPrompt = null;
+                    if (installButton) {
+                        installButton.style.display = 'none';
+                    }
+                });
+            }
+        }
+
+        // アプリがインストールされたらボタンを非表示
+        window.addEventListener('appinstalled', (evt) => {
+            console.log('アプリがインストールされました');
+            if (installButton) {
+                installButton.style.display = 'none';
+            }
+        });
+    </script>
+</body></html>
