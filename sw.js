@@ -3,8 +3,8 @@ const urlsToCache = [
   '/bodor-digital-manual/',
   '/bodor-digital-manual/index.html',
   // 必要に応じて他のファイルも追加
-  // '/bodor-digital-manual/style.css',
-  // '/bodor-digital-manual/script.js',
+  // '/bodor_digital_manual/style.css',
+  // '/bodor_digital_manual/script.js',
 ];
 
 // Service Worker インストール時
